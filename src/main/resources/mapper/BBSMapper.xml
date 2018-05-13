@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="domain.bbs.BBSMapper">
+
+    <select id="selectAll" resultType="domain.bbs.BBS">
+        SELECT *
+        FROM BBS;
+    </select>
+
+    <insert id="create" parameterType="domain.bbs.BBS">
+        INSERT INTO BBS(title,content)
+        VALUES(#{title},#{content})
+    </insert>
+
+    <select id="selectById" parameterType="java.lang.Long" resultType="domain.bbs.BBS">
+        SELECT *
+        FROM BBS
+        WHERE id=#{id}
+    </select>
+
+    <delete id="deleted" parameterType="java.lang.Long">
+        DELETE FROM BBS
+        WHERE id=#{id}
+    </delete>
+
+    <update id="update" parameterType="domain.bbs.BBS" >
+        UPDATE BBS
+        SET
+          title = #{title},
+          content = #{content}
+        WHERE id=#{id}
+    </update>
+</mapper>
